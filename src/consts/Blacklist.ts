@@ -1,0 +1,6 @@
+export const BLACKLIST_IDS = [
+  "7a6a63191bd54810959183e0cf0a3166",
+  "48e12157916245fbb55b2cdb20107890",
+  "db1cb14b8a914b4dad1d5b6a2ce96328",
+  "02399a63a5e74fc188f51c29d70676cb",
+];
