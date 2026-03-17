@@ -119,7 +119,7 @@ Token replacement in the head/frontend application is handled separately by your
 ## ⚠️ Notes
 
 - The app behavior depends on being loaded from a valid Marketplace origin.
-- Different XM Cloud tenants can expose slightly different Authoring GraphQL `createItem` input contracts. The implementation includes fallback mutation shapes and error extraction to improve compatibility and diagnostics.
+- Different SitecoreAI tenants can expose slightly different Authoring GraphQL `createItem` input contracts. The implementation includes fallback mutation shapes and error extraction to improve compatibility and diagnostics.
 - Template resolution can vary by context visibility; the app uses cached/template-hint strategies to reduce failures.
 
 ## 📚 References
