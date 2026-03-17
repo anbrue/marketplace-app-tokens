@@ -124,7 +124,6 @@ Token replacement in the head/frontend application is handled separately by your
 
 ## 📚 References
 
-- Starter Marketplace Apps: [https://github.com/Sitecore/marketplace-starter](https://github.com/Sitecore/marketplace-starter)
 - Marketplace App Docs: [https://doc.sitecore.com/mp/en/developers/marketplace/custom-marketplace-apps.html](https://doc.sitecore.com/mp/en/developers/marketplace/custom-marketplace-apps.html)
 - Blog background and concept walkthrough: [https://www.scadvent.com/2025/marketplace-app-content-tokens/](https://www.scadvent.com/2025/marketplace-app-content-tokens/)
 
