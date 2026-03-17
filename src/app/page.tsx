@@ -1,6 +1,7 @@
 "use client";
 
 import { TokenContextPanel } from "@/components/token-panel";
+import { Card, CardContent } from "@/components/ui/card";
 import useMarketplaceClient from "@/hooks/useMarketplaceClient";
 import usePagesContext from "@/hooks/usePagesContext";
 
@@ -13,15 +14,19 @@ function PagesContextPanel() {
 
 
   return (
-    <div style={{ padding: "1rem", border: "1px solid #ccc", borderRadius: "8px", maxWidth: "600px", margin: "2rem auto" }}>
+    <div className="mx-auto mt-8 max-w-[760px] p-6">
       {client && pagesContext ? (
-        <>
-          <div>
+        <Card className="shadow-sm">
+          <CardContent>
             <TokenContextPanel />
-          </div>
-        </>
+          </CardContent>
+        </Card>
       ) : (
-        <p>No page context available yet.</p>
+        <Card className="shadow-sm">
+          <CardContent>
+            <p className="text-muted-foreground">No page context available yet.</p>
+          </CardContent>
+        </Card>
       )}
     </div>
   );

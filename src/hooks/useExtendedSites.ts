@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { GetItemByPath } from "@/services/itemService";
+import { ResolveContentTokensFolderId } from "@/services/tokenService";
 import useSites from "./useSites";
 /**********************************************************/
 export interface Site {
@@ -8,6 +9,9 @@ export interface Site {
   properties: {
     rootPath: string;
     sharedSite: boolean;
+  };
+  permissions?: {
+    canCreate?: boolean;
   };
   name: string;
 }
@@ -18,6 +22,7 @@ export interface ExtendedSite {
   globalDataItemId: string;
   contentTokensFolderId: string;
   isShared: boolean;
+  canCreateTokens: boolean;
 }
 /**********************************************************/
 export default function useExtendedSites() {
@@ -39,13 +44,25 @@ export default function useExtendedSites() {
               "en",
               []
             );
-            const contentTokensFolder = await GetItemByPath(globalItemRootPath + "/Content Tokens", "en", []);
+            const resolvedContentTokensFolderId = await ResolveContentTokensFolderId(
+              site.properties.rootPath,
+              "en"
+            );
+            const fallbackContentTokensFolder = await GetItemByPath(
+              globalItemRootPath + "/Content Tokens",
+              "en",
+              []
+            );
             customSites.push({
               site,
               rootItemId: item?.id ?? "",
               globalDataItemId: globalItemRootItem?.id ?? "",
-              contentTokensFolderId: contentTokensFolder?.id ?? "",
-              isShared : site?.properties?.sharedSite == "true"
+              contentTokensFolderId:
+                resolvedContentTokensFolderId || fallbackContentTokensFolder?.id || "",
+              isShared:
+                site?.properties?.sharedSite === true ||
+                site?.properties?.sharedSite === "true",
+              canCreateTokens: Boolean(site?.permissions?.canCreate)
             });
           })
         );

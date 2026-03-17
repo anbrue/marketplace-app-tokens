@@ -31,7 +31,9 @@ export const GetTokensQuery = `query Tokens($itemId:String!, $language:String!, 
       path
       itemId
       innerItem {
+        template { templateId }
         key:field(name: "Key"){value}
+        value: field(name: "Value") {value}
         phrase: field(name: "Phrase") {value}
       }
     }
